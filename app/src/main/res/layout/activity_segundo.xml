@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".segundoActivity">
+
+    <TextView
+        android:id="@+id/tv_titulo2"
+        android:layout_width="139dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/tv_titulo2"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="350dp"
+        android:layout_height="480dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_titulo2"
+        app:layout_constraintVertical_bias="0.211">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/txt_nombre"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/txt_nombre"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txt_cedula"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/txt_cedula"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/txt_celular"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/txt_celular"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/txt_edad"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/txt_edad"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/txt_posicion"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/txt_posicion"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/txt_equipo"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/txt_equipo"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_agregar"
+        android:layout_width="393dp"
+        android:layout_height="53dp"
+        android:onClick="Inscribir"
+        android:text="@string/btn_agregar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2"
+        app:layout_constraintVertical_bias="0.493" />
+</androidx.constraintlayout.widget.ConstraintLayout>
