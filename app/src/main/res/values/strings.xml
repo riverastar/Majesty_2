@@ -1,21 +1,19 @@
 <resources>
-    <string name="app_name">Majesty</string>
-
+    <string name="app_name">Direcciones</string>
     <string name="tv_titulo">Bienvenidos</string>
-    <string name="txt_consulta">Ingresa N° Cedula</string>
     <string name="btn_consulta">Buscar</string>
     <string name="btn_segundo">Inscribir</string>
     <string name="tv_titulo2">Datos del Jugador</string>
-    <string name="txt_cedula">Cedula</string>
-    <string name="txt_nombre">\t\t\t\tNombre</string>
-    <string name="txt_celular">Celular</string>
-    <string name="txt_equipo">Equipo</string>
-    <string name="txt_edad">Edad</string>
-    <string name="txt_posicion">Posicion</string>
-    <string name="btn_agregar">Inscribir</string>
-    <string name="item1">Inscripcion</string>
-    <string name="item2">Estadisticas</string>
-    <string name="item3">Pagos</string>
-    <string name="item4">Eliminar</string>
-
+    <string name="item1">Buscar</string>
+    <string name="item2">Editar</string>
+    <string name="item3">Eliminar</string>
+    <string name="item4">Acerca de</string>
+    <string name="etxt_direccion">Dirección</string>
+    <string name="iv_foto"></string>
+    <string name="btn_lista">LISTA</string>
+    <string name="etxt_descripcion">Descripción o referencia</string>
+    <string name="etxt_buscar">Buscar</string>
+    <string name="et_buscar">Dirección Busqueda</string>
+    <string name="btn_guardar">GUARDAR</string>
+    <string name="btn_buscar">Buscar</string>
 </resources>

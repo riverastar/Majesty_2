@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,36 +10,98 @@
 
     <TextView
         android:id="@+id/tv_bienvenidos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="217dp"
+        android:layout_height="39dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="96dp"
+        android:layout_marginLeft="96dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="97dp"
+        android:layout_marginRight="97dp"
         android:text="@string/tv_titulo"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_consulta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="276dp"
-        android:text="@string/btn_consulta"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="407dp"
+        android:layout_height="304dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="107dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.272"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.886">
 
-    <Button
-        android:id="@+id/btn_segundo"
-        android:layout_width="83dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginBottom="280dp"
-        android:onClick="segundo"
-        android:text="@string/btn_segundo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.226"
-        app:layout_constraintStart_toEndOf="@+id/btn_consulta" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/etxt_direccion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/etxt_direccion"
+            android:inputType="textPostalAddress" />
+
+        <EditText
+            android:id="@+id/etxt_descripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="start|top"
+            android:hint="@string/etxt_descripcion"
+            android:inputType="textMultiLine" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_foto"
+                android:layout_width="136dp"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/previo" />
+
+            <ImageButton
+                android:id="@+id/cargarfoto"
+                android:layout_width="119dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/camara" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_guardar"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:onClick="Guardar"
+            android:text="@string/btn_guardar" />
+
+        <Button
+            android:id="@+id/btn_lista"
+            android:layout_width="match_parent"
+            android:layout_height="51dp"
+            android:text="Button"
+            tools:text="@string/btn_lista" />
+    </LinearLayout>
+
+</RelativeLayout>
