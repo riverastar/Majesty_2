@@ -4,16 +4,22 @@
 
     <item
         android:id="@+id/item1"
-        android:title="@string/item1" />
+        android:icon="@drawable/ic_icon"
+        android:title="@string/item1"
+        app:showAsAction="ifRoom"/>
+
     <item
         android:id="@+id/item2"
-        android:title="@string/item2" />
+        android:title="@string/item2"
+        app:showAsAction="never"/>
     <item
         android:id="@+id/item3"
-        android:title="@string/item3" />
+        android:title="@string/item3"
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/item4"
-        android:title="@string/item4" />
+        android:title="@string/item4"
+        app:showAsAction="never"/>
 
 </menu>

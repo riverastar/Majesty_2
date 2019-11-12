@@ -8,17 +8,23 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import uk.co.senab.photoview.PhotoViewAttacher;
+
+import java.util.ArrayList;
 
 public class buscarActivity extends AppCompatActivity {
         private EditText et_buscar;
         private Button bbuscar;
         private ImageView fotoconsulta;
         private TextView tvb_dir,tvb_des;
+        private PhotoViewAttacher photoViewAttacher;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +41,8 @@ public class buscarActivity extends AppCompatActivity {
             tvb_des = (TextView)findViewById(R.id.tvb_des);
             fotoconsulta = (ImageView)findViewById(R.id.img_fotoconsulta);
 
-    }
+
+        }
     public void consultar(View view) {
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"administracion",null,1);
         SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
@@ -45,16 +52,18 @@ public class buscarActivity extends AppCompatActivity {
         if (!dir.isEmpty()){
            Cursor file = BaseDeDatos.rawQuery("SELECT direccion, descripcion, foto FROM directorio WHERE direccion ='" + dir +"'", null);
             if (file.moveToFirst()){
-                tvb_dir.setText(file.getString(0));
-                tvb_des.setText(file.getString(1));
+                tvb_dir.setText("Direccion:"+file.getString(0));
+                tvb_des.setText("Descripcion:"+file.getString(1));
                 byte [] img = file.getBlob(2);
                 Bitmap bmp = BitmapFactory.decodeByteArray(img,0,img.length);
                 fotoconsulta.setImageBitmap(bmp);
+                fotoconsulta.setVisibility(view.getVisibility());
+                photoViewAttacher = new PhotoViewAttacher(fotoconsulta);
 
                 BaseDeDatos.close();
                 et_buscar.setText("");
             }else {
-                Toast.makeText(this,"Direcion no existe",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"Direccion no existe",Toast.LENGTH_LONG).show();
                 BaseDeDatos.close();
             }
         }else {

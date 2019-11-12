@@ -6,68 +6,81 @@
     android:layout_height="match_parent"
     tools:context=".buscarActivity">
 
+
     <TextView
         android:id="@+id/tv_titulo2"
-        android:layout_width="139dp"
+        android:layout_width="188dp"
         android:layout_height="30dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="4dp"
         android:text="@string/tv_titulo2"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="318dp"
-        android:layout_height="253dp"
-        android:layout_marginBottom="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="64dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_titulo2"
-        app:layout_constraintVertical_bias="0.078">
+        app:layout_constraintTop_toBottomOf="@+id/tv_titulo2">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/et_buscar"
+            android:layout_width="256dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:ems="10"
+            android:hint="@string/et_buscar"
+            android:inputType="textPostalAddress" />
 
-            <EditText
-                android:id="@+id/et_buscar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/et_buscar"
-                android:inputType="textPostalAddress" />
+        <ImageView
+            android:id="@+id/imgv_buscar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:contentDescription="@string/app_name"
+            android:onClick="consultar"
+            app:srcCompat="@android:drawable/ic_search_category_default" />
 
-            <ImageView
-                android:id="@+id/img_fotoconsulta"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:contentDescription="@string/app_name"
-                app:srcCompat="@drawable/previo" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvb_dir"
-                android:layout_width="match_parent"
-                android:layout_height="40dp" />
+    <LinearLayout
+        android:layout_width="214dp"
+        android:layout_height="311dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
-            <TextView
-                android:id="@+id/tvb_des"
-                android:layout_width="match_parent"
-                android:layout_height="38dp" />
+        <ImageView
+            android:id="@+id/img_fotoconsulta"
+            android:layout_width="212dp"
+            android:layout_height="209dp"
+            android:contentDescription="@string/app_name"
+            android:visibility="invisible"
+            app:srcCompat="@drawable/previo" />
 
-            <Button
-                android:id="@+id/btn_buscar"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:onClick="consultar"
-                android:text="@string/btn_buscar"
-                app:layout_constraintHorizontal_bias="0.111"
-                app:layout_constraintVertical_bias="0.0" />
-        </LinearLayout>
-    </ScrollView>
+        <TextView
+            android:id="@+id/tvb_dir"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="@string/tvb_dir" />
+
+        <TextView
+            android:id="@+id/tvb_des"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:gravity="center"
+            android:text="@string/tvb_des" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
