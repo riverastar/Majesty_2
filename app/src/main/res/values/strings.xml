@@ -6,7 +6,7 @@
     <string name="tv_titulo2">Seccion de busquedas</string>
     <string name="item1"></string>
     <string name="item2">Buscar</string>
-    <string name="item3">Eliminar</string>
+    <string name="item3">Listar</string>
     <string name="item4">Acerca de</string>
     <string name="etxt_direccion">Dirección</string>
     <string name="iv_foto"></string>
@@ -16,6 +16,7 @@
     <string name="et_buscar">Dirección Busqueda</string>
     <string name="tvb_dir"></string>
     <string name="tvb_des"></string>
+    <string name="txt_cantidad"></string>
 
     <string name="btn_guardar">GUARDAR</string>
     <string name="imgv_buscar">Buscar</string>

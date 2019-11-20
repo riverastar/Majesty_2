@@ -8,6 +8,23 @@
 
 
     <TextView
+        android:id="@+id/txt_cantidad"
+        android:layout_width="374dp"
+        android:layout_height="54dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="19dp"
+        android:layout_marginLeft="19dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:layout_marginBottom="24dp"
+        android:foregroundGravity="center"
+        android:text="@string/txt_cantidad" />
+
+    <TextView
         android:id="@+id/tv_bienvenidos"
         android:layout_width="217dp"
         android:layout_height="39dp"
@@ -30,20 +47,18 @@
 
 
     <RelativeLayout
-        android:layout_width="381dp"
-        android:layout_height="519dp"
+        android:layout_width="wrap_content"
+        android:layout_height="331dp"
         android:layout_below="@+id/tv_bienvenidos"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="14dp"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="137dp">
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginRight="14dp">
 
         <EditText
             android:id="@+id/etxt_direccion"
@@ -82,25 +97,49 @@
             android:hint="@string/etxt_descripcion"
             android:inputType="textMultiLine" />
 
+        <Spinner
+            android:id="@+id/spinner_categoria"
+            android:layout_width="348dp"
+            android:layout_height="42dp"
+            android:layout_below="@+id/etxt_descripcion"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginRight="17dp" />
+
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="104dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="119dp"
-            android:layout_marginBottom="81dp"
+            android:layout_width="wrap_content"
+            android:layout_height="62dp"
+            android:layout_above="@+id/btn_guardar"
+            android:layout_below="@+id/spinner_categoria"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="26dp"
+            android:layout_marginRight="26dp"
+            android:layout_marginBottom="18dp"
             android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/iv_foto"
-                android:layout_width="132dp"
-                android:layout_height="83dp"
+                android:layout_width="112dp"
+                android:layout_height="55dp"
                 android:contentDescription="@string/app_name"
                 app:srcCompat="@drawable/previo" />
 
             <ImageButton
                 android:id="@+id/cargarfoto"
-                android:layout_width="107dp"
-                android:layout_height="match_parent"
+                android:layout_width="95dp"
+                android:layout_height="55dp"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/app_name"
                 app:srcCompat="@drawable/camara" />
@@ -117,9 +156,9 @@
             android:layout_alignParentBottom="true"
             android:layout_marginStart="7dp"
             android:layout_marginLeft="7dp"
-            android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="15dp"
             android:background="#FF070707"
             android:onClick="Guardar"
             android:shadowColor="#00CEC3C3"

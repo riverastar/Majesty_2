@@ -52,8 +52,8 @@ public class buscarActivity extends AppCompatActivity {
         if (!dir.isEmpty()){
            Cursor file = BaseDeDatos.rawQuery("SELECT direccion, descripcion, foto FROM directorio WHERE direccion ='" + dir +"'", null);
             if (file.moveToFirst()){
-                tvb_dir.setText("Direccion:"+file.getString(0));
-                tvb_des.setText("Descripcion:"+file.getString(1));
+                tvb_dir.setText("Direccion: "+file.getString(0));
+                tvb_des.setText("Descripcion: "+file.getString(1));
                 byte [] img = file.getBlob(2);
                 Bitmap bmp = BitmapFactory.decodeByteArray(img,0,img.length);
                 fotoconsulta.setImageBitmap(bmp);

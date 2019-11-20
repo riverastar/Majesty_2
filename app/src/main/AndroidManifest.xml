@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Lista"></activity>
+        <activity android:name=".Lista"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".buscarActivity"
             android:parentActivityName=".MainActivity" />

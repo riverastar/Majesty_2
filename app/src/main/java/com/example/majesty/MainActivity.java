@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.ViewGroup;
@@ -35,12 +36,14 @@ import static android.widget.Toast.makeText;
 public class MainActivity extends AppCompatActivity {
     //declarar variables
     private EditText et_direcion, et_descripcion;
-    private TextView txt_auto;
-    Button btn_guardar, btn_lista;
-    ImageView fotos;
-    ImageButton cargafoto;
+    private TextView txt_can_dir;
+    private Button btn_guardar, btn_lista;
+    private ImageView fotos;
+    private ImageButton cargafoto;
+    private Spinner opc_categoria;
+    String [] opciones = {"Opciones","Casa","Edificio","Conjunto","Banco","Taller","Restaurante","Oficina","Local","Otro"};
+    int can = 0;
     static final int REQUEST_IMAGE_CAPTURE = 1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,35 +52,32 @@ public class MainActivity extends AppCompatActivity {
         //poner el icono action bar
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-
         //Permisos para acceder a la camara
         if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1000);
         }
-
-
-
         //inicializar variables
+        et_direcion = (EditText) findViewById(R.id.etxt_direccion);
+        et_descripcion = (EditText) findViewById(R.id.etxt_descripcion);
+        opc_categoria = (Spinner)findViewById(R.id.spinner_categoria);
+        fotos = (ImageView) findViewById(R.id.iv_foto);
+        txt_can_dir = (TextView) findViewById(R.id.txt_cantidad);
+        cargafoto = (ImageButton) findViewById(R.id.cargarfoto);
+        btn_guardar = (Button) findViewById(R.id.btn_guardar);
 
-        et_direcion = (EditText)findViewById(R.id.etxt_direccion);
-        et_descripcion = (EditText)findViewById(R.id.etxt_descripcion);
-        fotos = (ImageView)findViewById(R.id.iv_foto);
 
-        cargafoto = (ImageButton)findViewById(R.id.cargarfoto);
-        btn_guardar = (Button)findViewById(R.id.btn_guardar);
-
-
-
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item,opciones);
+        opc_categoria.setAdapter(adapter);
         //metodo onclick para tomar foto
         cargafoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 llamarintent();
 
-                }
+            }
 
         });
-
+        autoconsulta();
     }
 
     private void llamarintent() {
@@ -108,12 +108,23 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.item1) {
-
+            AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+            SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
+            Cursor cantidad = BaseDeDatos.rawQuery("select count(*) from directorio;", null);
+            cantidad.moveToFirst();
+            if (cantidad.moveToFirst()) {
+                do {
+                    txt_can_dir.setText("Cantidad de direcciones:" + cantidad.getString(0));
+                } while (cantidad.moveToNext());
+            }
+            BaseDeDatos.close();
         } else if (id == R.id.item2) {
-            Intent segundo = new Intent(this, buscarActivity.class);
-            startActivity(segundo);
+            Intent buscar = new Intent(this, buscarActivity.class);
+            startActivity(buscar);
         } else if (id == R.id.item3) {
-            Toast.makeText(this, "opcion3", Toast.LENGTH_SHORT).show();
+            Intent lista = new Intent(this, Lista.class);
+            startActivity(lista);
+
         } else if (id == R.id.item4) {
             Toast.makeText(this, "opcion4", Toast.LENGTH_SHORT).show();
         }
@@ -132,16 +143,18 @@ public class MainActivity extends AppCompatActivity {
 
         String direcion = et_direcion.getText().toString();
         String descripcion = et_descripcion.getText().toString();
+        String categoria = opc_categoria.getSelectedItem().toString();
 
         imegeViewToByte(fotos);
-        Cursor validar = BaseDeDatos.rawQuery("select count(*) from directorio where direccion='"+direcion+"'",null);
+        Cursor validar = BaseDeDatos.rawQuery("select count(*) from directorio where direccion='" + direcion + "'", null);
 
 
-        if (validar.getCount() <= 1){
-            if (!direcion.isEmpty() && !descripcion.isEmpty()) {
+        if (validar.getCount() <= 1) {
+            if (!direcion.isEmpty() && !descripcion.isEmpty() && !categoria.contentEquals("Opciones")) {
                 ContentValues registro = new ContentValues();
                 registro.put("direccion", direcion);
                 registro.put("descripcion", descripcion);
+                registro.put("categoria", categoria);
                 registro.put("foto", imegeViewToByte(fotos));
 
                 BaseDeDatos.insert("directorio", null, registro);
@@ -149,25 +162,36 @@ public class MainActivity extends AppCompatActivity {
                 et_direcion.setText("");
                 et_descripcion.setText("");
                 fotos.setImageResource(R.drawable.previo);
-                makeText(this, "Inscripcion exitosa", LENGTH_SHORT).show();
+                makeText(this, "Direccion guardada", LENGTH_SHORT).show();
             } else {
                 makeText(this, "Debes llenar todos los campos", LENGTH_SHORT).show();
 
             }
-        }else {
-            Toast.makeText(this,"Esta direcion ya exixte",LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Esta direcion ya exixte", LENGTH_SHORT).show();
         }
 
     }
 
+
+
     private byte[] imegeViewToByte(ImageView image) {
-        Bitmap bitmap = ((BitmapDrawable)image.getDrawable()).getBitmap();
+        Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG,100,stream);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] byteArray = stream.toByteArray();
         return byteArray;
     }
-
-
+    private void autoconsulta() {
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this, "administracion", null, 1);
+        SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
+        Cursor cantidad = BaseDeDatos.rawQuery("select count(*) from directorio;", null);
+        cantidad.moveToFirst();
+        if (cantidad.moveToFirst()) {
+            do {
+                txt_can_dir.setText("Cantidad de direcciones: "+cantidad.getString(0));
+            } while (cantidad.moveToNext());
+        }
+    }
 
 }
