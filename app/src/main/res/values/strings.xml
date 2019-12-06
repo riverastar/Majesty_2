@@ -11,6 +11,8 @@
     <string name="etxt_direccion">Dirección</string>
     <string name="iv_foto"></string>
     <string name="btn_lista">LISTA</string>
+    <string name="btn_eliminar">ELIMINAR</string>
+    <string name="btn_editar">MODIFICAR</string>
     <string name="etxt_descripcion">Descripción o referencia</string>
     <string name="etxt_buscar">Buscar</string>
     <string name="et_buscar">Dirección Busqueda</string>

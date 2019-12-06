@@ -21,12 +21,11 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="318dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="307dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="4dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_titulo2">
 
@@ -46,41 +45,77 @@
             android:contentDescription="@string/app_name"
             android:onClick="consultar"
             app:srcCompat="@android:drawable/ic_search_category_default" />
-
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="214dp"
-        android:layout_height="311dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
+    <ScrollView
+        android:id="@+id/slv_busqueda"
+        android:layout_width="343dp"
+        android:layout_height="381dp"
+        android:layout_marginTop="4dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.0">
 
-        <ImageView
-            android:id="@+id/img_fotoconsulta"
-            android:layout_width="212dp"
-            android:layout_height="209dp"
-            android:contentDescription="@string/app_name"
-            android:visibility="invisible"
-            app:srcCompat="@drawable/previo" />
+        <LinearLayout
+            android:id="@+id/lL_busqueda"
+            android:layout_width="362dp"
+            android:layout_height="467dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
 
-        <TextView
-            android:id="@+id/tvb_dir"
-            android:layout_width="match_parent"
-            android:layout_height="34dp"
-            android:gravity="center"
-            android:text="@string/tvb_dir" />
+            <ImageView
+                android:id="@+id/img_fotoconsulta"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:contentDescription="@string/app_name"
+                app:srcCompat="@drawable/previo" />
 
-        <TextView
-            android:id="@+id/tvb_des"
-            android:layout_width="match_parent"
-            android:layout_height="34dp"
-            android:gravity="center"
-            android:text="@string/tvb_des" />
+            <EditText
+                android:id="@+id/tvb_dir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/tvb_dir" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/tvb_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/tvb_des" />
+
+            <EditText
+                android:id="@+id/tvb_cat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+
+            <Button
+                android:id="@+id/btn_eliminar"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:onClick="Eliminar"
+                android:text="@string/btn_eliminar" />
+
+            <Button
+                android:id="@+id/btn_editar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="Modificar"
+                android:text="@string/btn_editar"
+                tools:layout_editor_absoluteX="173dp"
+                tools:layout_editor_absoluteY="464dp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

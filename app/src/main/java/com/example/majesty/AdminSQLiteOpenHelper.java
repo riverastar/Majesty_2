@@ -13,7 +13,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase BaseDeDatos) {
-
+     BaseDeDatos.execSQL("create table directorio(codigo integer primary key autoincrement, direccion text, descripcion text, categoria text, foto blod)");
     }
 
     @Override
